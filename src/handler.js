@@ -1,8 +1,8 @@
 const {v4: uuidv4} = require('uuid');
 const notes = require('./notes');
 
-const addNoteHandler = (handler, h) => {
-  const {title, tags, body} = response.payload;
+const addNoteHandler = (request, h) => {
+  const {title, tags, body} = request.payload;
 
   const id = uuidv4();
   const createdAt = new Date().toISOString();
@@ -27,6 +27,7 @@ const addNoteHandler = (handler, h) => {
     response.code(201);
     return response;
   }
+
   const response = h.response({
     status: 'fail',
     message: 'Catatan gagal ditambahkan',
